@@ -2,3 +2,6 @@
 *.data
 *.p
 *.csv
+*.hi
+*.o
+*.exe
