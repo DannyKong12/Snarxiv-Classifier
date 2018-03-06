@@ -7,6 +7,7 @@ import           Control.Monad
 import           Data.Monoid
 import           Data.Text          (Text)
 import qualified Data.Text          as T
+import           Data.Text.IO
 import           Data.Time.Clock
 import           Data.Time.Format
 import qualified Grammar.Parse      as Parse
@@ -20,7 +21,7 @@ main = do
   [amount, grammarFile] <- getArgs
   g <- Parse.grammarFromFile grammarFile
   titles <- genTitles g (read amount::Int)
-  putStrLn (T.unpack (T.intercalate "\n" titles))
+  Data.Text.IO.putStr (T.unlines titles)
 
 genTitles :: Grammar -> Int -> IO [Text]
 genTitles grammar n = do
